@@ -31,10 +31,13 @@ $H_A$: The average number of push ups done in two minutes by line players is sta
 
 <!--Decide on your methods: use "variable analysis" or other appropriate descriptors. Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-Skill is a categorical variable   
+Position is a categorical variable   
 Pushups is a numerical variable  
 
 We predict pushups based on position, viz., pushups ~ position   
+
+So we have numerical ~ categorical 
+load the num~cat helper file
 
 # Results
 
@@ -46,16 +49,36 @@ We predict pushups based on position, viz., pushups ~ position
 
 <!--Graphical results here. Make sure to show your code. Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too. Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+boxplot(pushups~position,data=mydata)
+```
+
+
+The boxplot shows that skill position do more pushups in 2 minutes than line position.     
+
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+favstats(pushups~position,data=mydata)
+```
+
+skill players do up to 49 pushups more than the line players they only do 17.
 
 ## Inferential Results
 
 <!--State hypothesis clearly. Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc. Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+t.test(pushups~position,data=mydata)
+```
+
+The p-value is 0.000009421, which is less than 0.05, so we reject the null hypothesis and conclude there is a significant change between group LINE and SKILL. Not the null hypothesis but the actual hypothesis was correct.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here. If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason. Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
+Data from Georgetown College football team, line and skill position plays did as many pushsup in two minutes as they could. The boxplot the t-test showed that skill players outway the line players by 2 minutes. The p-value is 0.000009421, which is less than 0.05, so we reject the null hypothesis and conclude there is a significant change between group LINE and SKILL. Not the null hypothesis but the actual hypothesis was correct.
